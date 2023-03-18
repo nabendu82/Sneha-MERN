@@ -85,24 +85,67 @@
 // console.log(lang.includes('Cobol'));
 
 //Objects
-const person = {
-    firstName: 'Nabendu',
-    'Last Name': 'Biswas',
-    age: 40,
-    isDeveloper: true,
-    hobbies: ['coding', 'youtubing','teaching'],
-    address: {
-        hno: 95,
-        city: 'Bhopal',
-        state: 'MP'
-    }
+// const person = {
+//     firstName: 'Nabendu',
+//     'Last Name': 'Biswas',
+//     age: 40,
+//     isDeveloper: true,
+//     hobbies: ['coding', 'youtubing','teaching'],
+//     address: {
+//         hno: 95,
+//         city: 'Bhopal',
+//         state: 'MP'
+//     }
+// }
+
+// console.log(person);
+// console.log(person.firstName);
+// console.log(person['Last Name']);
+// console.log(person.hobbies[1]);
+// console.log(person.address.city);
+
+// console.log(Object.keys(person));
+// console.log(Object.values(person));
+
+//For loop
+// for(let i=0; i<=10; i++){
+//     console.log(`Loop Number - ${i}`)
+// }
+
+//While loop
+// let i=0;
+// while(i<=10){
+//     console.log(`Loop Number - ${i}`)
+//     i++;
+// }
+
+//Do-while loop
+// let i=0;
+// do{
+//     console.log(`Loop Number - ${i}`)
+//     i+=11;
+// }while(i<=10)
+
+//Arrays of object
+const lang = [
+    {id: 1, name: 'Pascal', year: 1970},
+    {id: 2, name: 'C', year: 1972},
+    {id: 3, name: 'C++', year: 1985},
+    {id: 4, name: 'Java', year: 1995},
+    {id: 5, name: 'JavaScript', year: 1996},
+    {id: 6, name: 'Kotlin', year: 2011}
+];
+
+//Traditional for loop
+for(let i=0; i<lang.length; i++){
+    console.log(lang[i].id)
 }
 
-console.log(person);
-console.log(person.firstName);
-console.log(person['Last Name']);
-console.log(person.hobbies[1]);
-console.log(person.address.city);
+//for..of loop
+for(let item of lang){
+    console.log(item.name)
+}
 
-console.log(Object.keys(person));
-console.log(Object.values(person));
+//forEach loop
+lang.forEach(item => console.log(item.year))
+

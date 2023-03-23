@@ -127,25 +127,138 @@
 // }while(i<=10)
 
 //Arrays of object
-const lang = [
-    {id: 1, name: 'Pascal', year: 1970},
-    {id: 2, name: 'C', year: 1972},
-    {id: 3, name: 'C++', year: 1985},
-    {id: 4, name: 'Java', year: 1995},
-    {id: 5, name: 'JavaScript', year: 1996},
-    {id: 6, name: 'Kotlin', year: 2011}
-];
+// const lang = [
+//     {id: 1, name: 'Pascal', year: 1970},
+//     {id: 2, name: 'C', year: 1972},
+//     {id: 3, name: 'C++', year: 1985},
+//     {id: 4, name: 'Java', year: 1995},
+//     {id: 5, name: 'JavaScript', year: 1996},
+//     {id: 6, name: 'Kotlin', year: 2011}
+// ];
 
 //Traditional for loop
-for(let i=0; i<lang.length; i++){
-    console.log(lang[i].id)
-}
+// for(let i=0; i<lang.length; i++){
+//     console.log(lang[i].id)
+// }
 
 //for..of loop
-for(let item of lang){
-    console.log(item.name)
-}
+// for(let item of lang){
+//     console.log(item.name)
+// }
 
 //forEach loop
-lang.forEach(item => console.log(item.year))
+// lang.forEach(item => console.log(item.year))
+
+//Conditionals
+
+
+//if statement
+// const x = '10';
+// if(x == 10) {
+//     console.log('x is 10');
+// }
+
+//if else statement
+// const y = '20';
+// if(y === 20){
+//     console.log('y is 20');
+// } else {
+//     console.log('y is string 20');
+// }
+
+//if-else if-else statement
+// const z = 69;
+// if(z > 100) {
+//     console.log('z is greater then 100');
+// } else if(z > 80) {
+//     console.log('z is greater then 80');
+// } else if(z > 60) {
+//     console.log('z is greater then 60');
+// } else if(z > 40) {
+//     console.log('z is greater then 40');
+// } else if(z > 20) {
+//     console.log('z is greater then 20');
+// } else {
+//     console.log('z is less then 20');
+// }
+
+//OR and AND operators
+const x = 20;
+const y = 30;
+
+if(x === 20 || y === 40){
+    console.log('Any one of the statement are true');
+}
+
+if(x === 20 && y === 30){
+    console.log('Both of the statement are true');
+}
+
+//Ternary Operator
+// const z = 10;
+// let color;
+
+// if(z > 10){
+//     color = 'red'
+// } else {
+//     color = 'blue'
+// }
+
+// console.log(color);
+
+// const color2 = z > 9 ? 'red' : 'blue';
+// console.log(color2);
+
+//Switch statement
+const color = 'purple';
+
+switch (color) {
+    case 'red':
+        console.log('color is red')
+        break;
+    case 'blue':
+        console.log('color is blue')
+        break;
+    case 'purple':
+    case 'brown':
+        console.log('color is purple or brown')
+        break;
+    case 'yellow':
+        console.log('color is yellow')
+        break;
+    default:
+        console.log('No color matched')
+        break;
+}
+
+//Functions
+
+//Method #1 - Function decleration
+function addNums(num1, num2) {
+    console.log(num1 + num2);
+}
+
+addNums(30, 20);
+
+//Method #2 - Function expressions
+const multiNums = function(num1, num2) {
+    return num1 * num2;
+}
+
+console.log(multiNums(30, 20));
+
+//Method #3 - Arrow Function
+const modNums = (num1, num2) => {
+    return num1 % num2;
+}
+
+console.log(modNums(30, 20));
+
+//Method #4 - Condensed Arrow Function
+const divNums = num1 => num1 / 5;
+
+console.log(divNums(30));
+
+
+
 

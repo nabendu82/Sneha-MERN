@@ -78,14 +78,79 @@
 // console.log(d);
 
 //Merging with spread
-let x1 = [1, 2], a1 = [3, 4], c1 = [9, 10];
-let d1 = [...x1, ...a1, ...c1];
-console.log(d1);
+// let x1 = [1, 2], a1 = [3, 4], c1 = [9, 10];
+// let d1 = [...x1, ...a1, ...c1];
+// console.log(d1);
 
 //Used in Objects
-let obj1 = { foo: 'bar', x: 42 }, obj2 = { foo: 'baz', y: 13 };
-let clonedObj = {...obj1}
+// let obj1 = { foo: 'bar', x: 42 }, obj2 = { foo: 'baz', y: 13 };
+// let clonedObj = {...obj1}
 // console.log(clonedObj)
 
-let mergedObj = { ...obj1, ...obj2 };
-console.log(mergedObj)
+// let mergedObj = { ...obj1, ...obj2 };
+// console.log(mergedObj)
+
+//Array Destructuring
+
+// const rgb = [255, 200, 0];
+// const r = rgb[0];
+// const g = rgb[1];
+// const b = rgb[2];
+
+// const [r, g, b] = rgb;
+// console.log(r, g, b);
+
+//Using Spread operator
+// const even = [2, 4, 6, 8, 10];
+// const [first, second, ...arr] = even;
+// console.log(first)
+// console.log(second)
+// console.log(arr)
+
+//Skipping items
+// const hex = ['#fff', '#000', '#678'];
+// const [white, black,] = hex;
+// console.log(white)
+// console.log(black)
+
+//Object destructuring
+// const developer = {
+//     firstname: 'Nabendu',
+//     lastname: 'Biswas',
+//     country: 'India'
+//   };
+
+// const firstname = developer.firstname;
+// const lastname = developer.lastname;
+// const country = developer.country;
+
+// const { firstname, lastname, country } = developer;
+
+// console.log(firstname, lastname, country);
+
+//Skipping items
+// const student = {
+//     name: 'Hriday',
+//     lname: 'Biswas',
+//     coun: 'India'
+//    };
+
+// const { name, coun } = student;
+// console.log(name, coun)
+
+//ES6 classes
+class CreateRoom {
+    constructor(name){
+        this.room = `${name}'s room`;
+    }
+
+    cleanRoom(soap){
+        console.log(`Cleaning ${this.room} with ${soap}`)
+    }
+}
+
+const nabsRoom = new CreateRoom('Nabendu');
+const shikhaRoom = new CreateRoom('Shikha');
+
+nabsRoom.cleanRoom('Domex');
+shikhaRoom.cleanRoom('Lizol');

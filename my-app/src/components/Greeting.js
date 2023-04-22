@@ -1,6 +1,11 @@
-const Greeting = () => {
+const Greeting = (props) => {
+  const { name, children } = props;
+  
   return (
-    <h1>Greeting from React</h1>
+    <>
+      <h1>Greeting from {name}</h1>
+      <p>{children}</p>
+    </>
   )
 }
 

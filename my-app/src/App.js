@@ -1,13 +1,17 @@
 import './App.css';
-import { Greet, ReactGreet } from './components/Greet';
 import Greeting from './components/Greeting';
+import Welcome from './components/Welcome';
 
 function App() {
   return (
     <div className="App">
-      <Greet />
-      <ReactGreet />
-      <Greeting />
+      <Greeting name="JavaScript" />
+      <Greeting name="Golang" />
+      <Greeting name="Swift">Language of iOS apps</Greeting>
+      <hr />
+      <Welcome name="Flutter">Language of cross-mobile development</Welcome>
+      <Welcome name="React" />
+      <Welcome name="React Native" />
     </div>
   );
 }

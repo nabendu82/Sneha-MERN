@@ -1,10 +1,10 @@
 import './App.css';
-import PostList from './components/PostList';
+import AdvForm from './components/AdvForm';
 
 function App() {
   return (
     <div className="App">
-      <PostList />
+      <AdvForm />
     </div>
   );
 }

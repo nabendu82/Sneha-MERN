@@ -1,10 +1,10 @@
 import './App.css';
-import AdvForm from './components/AdvForm';
+import RefsDemo from './components/RefsDemo';
 
 function App() {
   return (
     <div className="App">
-      <AdvForm />
+      <RefsDemo />
     </div>
   );
 }

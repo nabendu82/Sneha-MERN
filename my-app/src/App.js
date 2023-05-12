@@ -1,10 +1,16 @@
 import './App.css';
-import RefsDemo from './components/RefsDemo';
+import GrandParent from './components/GrandParent';
+import { ChannelProvider } from './components/channelContext';
+import { UserProvider } from './components/userContext';
 
 function App() {
   return (
     <div className="App">
-      <RefsDemo />
+      <UserProvider value="Nabendu">
+        <ChannelProvider value="TWD">
+          <GrandParent />
+        </ChannelProvider>
+      </UserProvider>
     </div>
   );
 }

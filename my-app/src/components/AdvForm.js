@@ -4,15 +4,26 @@ class AdvForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            user: '',
-            comment: '',
-            language: 'angular'
+            userId: '',
+            title: '',
+            body: ''
         }
     }
 
-    handleSubmit = e => {
+    handleSubmit = async e => {
         e.preventDefault();
-        console.log(this.state);
+        const url = 'https://jsonplaceholder.typicode.com/posts';
+        const settings = {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(this.state)
+        }
+        const res = await fetch(url, settings);
+        const data = await res.json();
+        console.log(data)
     }
 
     handleChange = e => {
@@ -22,28 +33,23 @@ class AdvForm extends Component {
     }
 
     render() {
-        const { user, comment, language } = this.state;
+        const { userId, title, body } = this.state;
 
         return (
             <form onSubmit={this.handleSubmit}>
                 <div>
-                    <label htmlFor="user">Username </label>
-                    <input type="text" id="user" name="user" value={user} onChange={this.handleChange} />
+                    <label htmlFor="userId">UserID </label>
+                    <input type="text" id="userId" name="userId" value={userId} onChange={this.handleChange} />
                 </div>
                 <br />
                 <div>
-                    <label htmlFor="comment">Comments </label>
-                    <textarea id="comment" name="comment" value={comment} onChange={this.handleChange}></textarea>
+                    <label htmlFor="title">Title </label>
+                    <input type="text" id="title" name="title" value={title} onChange={this.handleChange} />
                 </div>
                 <br />
                 <div>
-                    <label htmlFor="language">Language </label>
-                    <select id="language" name="language" value={language} onChange={this.handleChange}>
-                        <option value="react">React</option>
-                        <option value="reactnative">React Native</option>
-                        <option value="angular">Angular</option>
-                        <option value="vue">Vue</option>
-                    </select>
+                    <label htmlFor="body">Body </label>
+                    <textarea id="body" name="body" value={body} onChange={this.handleChange}></textarea>
                 </div>
                 <br />
                 <button type="submit">Submit</button>

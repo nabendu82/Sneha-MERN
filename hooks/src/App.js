@@ -1,10 +1,10 @@
 import './App.css';
-import HookArray from './components/HookArray';
+import HookMouse from './components/HookMouse';
 
 function App() {
   return (
     <div className="App">
-      <HookArray />
+      <HookMouse />
     </div>
   );
 }

@@ -1,10 +1,10 @@
 import './App.css';
-import HookMouse from './components/HookMouse';
+import PostForm from './components/PostForm';
 
 function App() {
   return (
     <div className="App">
-      <HookMouse />
+      <PostForm />
     </div>
   );
 }

@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ListIcon from '@material-ui/icons/List';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import InsertDriveFileIcon from '@material-ui/icons/InsertDriveFile';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import styled from 'styled-components';
+import { db } from '../firebase';
 
 const DataContainer = styled.div`
     flex: 1 1;
@@ -74,46 +75,56 @@ const DataListRow = styled.div`
 `
 
 const Data = () => {
-  return (
-    <DataContainer>
-        <DataHeader>
-            <div className="headerLeft">
-                <p>My Drive</p>
-                <ArrowDownwardIcon />
-            </div>
-            <div className="headerRight">
-                <ListIcon />
-                <InfoOutlinedIcon />
-            </div>
-        </DataHeader>
-        <div>
-            <DataGrid>
-                <DataFile>
-                    <InsertDriveFileIcon />
-                    <p>File Name</p>
-                </DataFile>
-                <DataFile>
-                    <InsertDriveFileIcon />
-                    <p>File Name</p>
-                </DataFile>
-            </DataGrid>
+    const [files, setFiles] = useState([])
+
+    useEffect(() => {
+        db.collection("myfiles").onSnapshot(snapshot => {
+            setFiles(snapshot.docs.map(doc => ({
+                id: doc.id,
+                data: doc.data()
+            })))
+        })
+    }, [])
+
+    return (
+        <DataContainer>
+            <DataHeader>
+                <div className="headerLeft">
+                    <p>My Drive</p>
+                    <ArrowDownwardIcon />
+                </div>
+                <div className="headerRight">
+                    <ListIcon />
+                    <InfoOutlinedIcon />
+                </div>
+            </DataHeader>
             <div>
-                <DataListRow>
-                    <p><b>Name <ArrowDownwardIcon /></b></p>
-                    <p><b>Owner</b></p>
-                    <p><b>Last Modified</b></p>
-                    <p><b>File Size</b></p>
-                </DataListRow>
-                <DataListRow>
-                    <p>Name <InsertDriveFileIcon /></p>
-                    <p>Me </p>
-                    <p>Yesterday</p>
-                    <p>1 GB</p>
-                </DataListRow>
+                <DataGrid>
+                    {files.map(file => (
+                        <DataFile key={file.id}>
+                            <InsertDriveFileIcon />
+                            <p>{file.data.filename}</p>
+                        </DataFile>
+                    ))}
+
+                </DataGrid>
+                <div>
+                    <DataListRow>
+                        <p><b>Name <ArrowDownwardIcon /></b></p>
+                        <p><b>Owner</b></p>
+                        <p><b>Last Modified</b></p>
+                        <p><b>File Size</b></p>
+                    </DataListRow>
+                    <DataListRow>
+                        <p>Name <InsertDriveFileIcon /></p>
+                        <p>Me </p>
+                        <p>Yesterday</p>
+                        <p>1 GB</p>
+                    </DataListRow>
+                </div>
             </div>
-        </div>
-    </DataContainer>
-  )
+        </DataContainer>
+    )
 }
 
 export default Data

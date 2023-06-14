@@ -86,6 +86,15 @@ const Data = () => {
         })
     }, [])
 
+    const changeBytes = (bytes, decimals = 2) => {
+        if (bytes === 0) return '0 Bytes';
+        const k = 1024;
+        const dm = decimals < 0 ? 0 : decimals;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+    }
+
     return (
         <DataContainer>
             <DataHeader>
@@ -115,12 +124,16 @@ const Data = () => {
                         <p><b>Last Modified</b></p>
                         <p><b>File Size</b></p>
                     </DataListRow>
-                    <DataListRow>
-                        <p>Name <InsertDriveFileIcon /></p>
-                        <p>Me </p>
-                        <p>Yesterday</p>
-                        <p>1 GB</p>
-                    </DataListRow>
+                    {files.map(file => (
+                        <DataListRow key={file.id}>
+                            <a href={file.data.fileURL} target="_blank">
+                                <p><InsertDriveFileIcon /> {file.data.filename}</p>
+                            </a>
+                            <p>Owner </p>
+                            <p>{new Date(file.data.timestamp?.seconds*1000).toUTCString()}</p>
+                            <p>{changeBytes(file.data.size)}</p>
+                        </DataListRow>
+                    ))}
                 </div>
             </div>
         </DataContainer>
